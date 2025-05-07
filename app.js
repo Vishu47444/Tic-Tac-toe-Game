@@ -30,7 +30,6 @@ boxes.forEach((box) => {
     if (turnO) {
       //playerO
       box.innerText = "O";
-      box.classList.remove("blue");
       turnO = false;
     } else {
       //playerX
@@ -43,7 +42,7 @@ boxes.forEach((box) => {
 
     let isWinner = checkWinner();
 
-    if (count === 9 && !isWinner) {
+    if (count === 9 && isWinner===false) {
       gameDraw();
     }
   });
@@ -65,6 +64,7 @@ const enableBoxes = () => {
   for (let box of boxes) {
     box.disabled = false;
     box.innerText = "";
+    box.classList.remove("blue");
   }
 };
 
@@ -87,6 +87,7 @@ const checkWinner = () => {
       }
     }
   }
+  return false;
 };
 
 newGameBtn.addEventListener("click", resetGame);
